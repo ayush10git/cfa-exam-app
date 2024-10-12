@@ -2,4 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* Custom media queries for responsive width */
+@media only screen and (max-width: 600px) {
+  .doughnut-chart-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .doughnut-chart-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .doughnut-chart-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .doughnut-chart-container {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .doughnut-chart-container {
+    width: 70%;
+  }
+}
+@media only screen and (min-width: 1310px) {
+  .doughnut-chart-container {
+    width: 450px;
+  }
+}
