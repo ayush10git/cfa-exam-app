@@ -9,18 +9,17 @@ export default function AnalyticsTab({ setTabIndex }) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    setTabIndex(newValue); // Update the parent component with the new index
+    setTabIndex(newValue);
   };
 
   const handleDropdownChange = (event) => {
-    const newIndex = parseInt(event.target.value, 10); // Parse to ensure it's an integer
+    const newIndex = parseInt(event.target.value, 10);
     setValue(newIndex);
-    setTabIndex(newIndex); // Update the parent component with the new index
+    setTabIndex(newIndex);
   };
 
   return (
     <Box sx={{ maxWidth: { xs: 320, sm: 480 }, bgcolor: "background.paper" }}>
-      {/* Tabs for larger screens */}
       <div className="hidden md:block">
         <Tabs
           value={value}
@@ -39,7 +38,6 @@ export default function AnalyticsTab({ setTabIndex }) {
         </Tabs>
       </div>
 
-      {/* Dropdown for smaller screens */}
       <div className="block md:hidden">
         <select
           value={value}

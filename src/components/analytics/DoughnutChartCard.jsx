@@ -46,16 +46,16 @@ const DoughnutChart = ({
   };
 
   return (
-    <div className="w-[100%] p-4 shadow-md rounded-md">
+    <div className="w-[100%] h-[300px] p-4 shadow-md rounded-md">
       <h1 className="text-center text-2xl font-semibold mb-5">
         Total Questions Solved
       </h1>
       <div className="flex items-center justify-center gap-[5rem]">
-        <div className="relative w-[220px] h-[220px]">
+        <div className="relative w-[200px] h-[200px]">
           <Doughnut data={doughnutData} options={doughnutOptions} />
           <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none text-[#625C5C]">
-            <span className="text-xl font-medium">{totalSolved}</span>
-            <span className="text-xl font-medium">Questions</span>
+            <span className="text-lg font-medium">{totalSolved}</span>
+            <span className="text-lg font-medium">Questions</span>
           </div>
         </div>
 

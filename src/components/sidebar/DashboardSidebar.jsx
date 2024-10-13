@@ -1,42 +1,45 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation"; // To detect route changes
+import { usePathname } from "next/navigation";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import { PiExam } from "react-icons/pi";
 import Image from "next/image";
 import Link from "next/link";
-import MenuIcon from "@mui/icons-material/Menu"; // Button icon for opening sidebar
+import MenuIcon from "@mui/icons-material/Menu";
 
 const DashboardSidebar = () => {
   const pathname = usePathname();
   const sidebarElementCss = "bg-[#79A8EE] rounded-md text-white";
 
-  const [isSidebarOpen, setSidebarOpen] = useState(false); // State for sidebar toggle
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
-  // Close the sidebar when the route (pathname) changes
+  // Automatically close the sidebar when the path changes
   useEffect(() => {
     setSidebarOpen(false);
   }, [pathname]);
 
   return (
     <div>
-      {/* Button to toggle the sidebar, visible only on small screens */}
-      <button className="sm:hidden p-2" onClick={toggleSidebar}>
+      {/* Button to toggle the sidebar, visible only on screens smaller than 768px */}
+      <button
+        className="md:hidden p-2 fixed top-4 left-4 z-50"
+        onClick={toggleSidebar}
+      >
         <MenuIcon className="w-8 h-8" />
       </button>
 
-      {/* Sidebar */}
+      {/* Sidebar that is fixed on screens 768px and larger */}
       <aside
-        className={`bg-[#D7E4F8] min-h-screen sm:w-[150px] md:w-[170px] lg:w-[200px] xl:w-[250px] flex flex-col gap-2 p-2 fixed top-0 left-0 z-50 transition-transform duration-300 transform ${
+        className={`bg-[#D7E4F8] min-h-screen md:w-[170px] lg:w-[200px] xl:w-[250px] flex flex-col gap-2 p-2 fixed top-0 left-0 z-50 transition-transform duration-300 transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } sm:static sm:translate-x-0 sm:w-auto`}
+        } md:static md:translate-x-0 md:w-auto`}
       >
         <div className="-ml-1">
           <Image
@@ -106,10 +109,10 @@ const DashboardSidebar = () => {
         </div>
       </aside>
 
-      {/* Overlay when sidebar is open on small screens */}
+      {/* Overlay when sidebar is open on smaller screens */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 sm:hidden z-40"
+          className="fixed inset-0 bg-black opacity-50 md:hidden z-40"
           onClick={toggleSidebar}
         />
       )}
