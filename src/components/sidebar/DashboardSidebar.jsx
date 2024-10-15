@@ -9,6 +9,7 @@ import { PiExam } from "react-icons/pi";
 import Image from "next/image";
 import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
+import Navbar from "@/components/navbar/Navbar";
 
 const DashboardSidebar = () => {
   const pathname = usePathname();
@@ -26,7 +27,7 @@ const DashboardSidebar = () => {
   }, [pathname]);
 
   return (
-    <div>
+    <div className="fixed top-0 left-0 z-50 w-[250px]">
       {/* Button to toggle the sidebar, visible only on screens smaller than 768px */}
       <button
         className="md:hidden p-2 fixed top-4 left-4 z-50"
@@ -36,15 +37,15 @@ const DashboardSidebar = () => {
       </button>
 
       {/* Sidebar that is fixed on screens 768px and larger */}
-      <aside
-        className={`bg-[#D7E4F8] min-h-screen md:w-[170px] lg:w-[200px] xl:w-[250px] flex flex-col gap-2 p-2 fixed top-0 left-0 z-50 transition-transform duration-300 transform ${
+      <div
+        className={`bg-[#D7E4F8] h-screen flex flex-col gap-2 p-2 fixed top-0 left-0 transition-transform duration-300 transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:static md:translate-x-0 md:w-auto`}
+        } md:static md:translate-x-0 md:w-auto z-40`}
       >
         <div className="-ml-1">
           <Image
             src="/logo.png"
-            className="md:w-[150px] lg:w-[180px] xl:w-[200px] 2xl:w-[210px]"
+            className="w-[190px] 2xl:w-[210px]"
             width={300}
             height={300}
             alt="Logo"
@@ -107,12 +108,18 @@ const DashboardSidebar = () => {
             </Link>
           </div>
         </div>
-      </aside>
+        {/* Add Navbar content inside sidebar for smaller screens */}
+        {isSidebarOpen && (
+          <div className="p-4 mt-2 bg-blue-200">
+            <Navbar isSidebarOpen={isSidebarOpen} />
+          </div>
+        )}
+      </div>
 
       {/* Overlay when sidebar is open on smaller screens */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 md:hidden z-40"
+          className="fixed inset-0 bg-black opacity-50 md:hidden z-30"
           onClick={toggleSidebar}
         />
       )}

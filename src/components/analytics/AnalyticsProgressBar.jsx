@@ -28,8 +28,8 @@ const AnalyticsProgressBar = ({
   }, [easyPercentage, mediumPercentage, hardPercentage]);
 
   return (
-    <div className="w-full h-[300px] max-w-lg bg-white shadow-md rounded-lg p-2">
-      <h1 className="text-2xl font-semibold mt-2 text-center">
+    <div className="w-full h-[300px] bg-white shadow-md rounded-lg p-2">
+      <h1 className="text-2xl font-regular mt-2 text-center">
         Difficulty Wise Accuracy
       </h1>
       <div className="flex flex-col gap-6 items-center p-2 mt-3">

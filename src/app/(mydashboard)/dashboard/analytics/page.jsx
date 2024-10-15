@@ -1,10 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import AnalyticsTab from "@/components/analytics/AnalyticsTab";
-import DoughnutChart from "@/components/analytics/DoughnutChartCard";
 import "../../../globals.css";
-import AnalyticsProgressBar from "@/components/analytics/AnalyticsProgressBar";
-import ConfidenceCard from "@/components/analytics/ConfidenceCard";
+import AnalyticsTab from "@/components/analytics/AnalyticsTab";
+import Analytics from "@/components/analytics/Analytics";
 
 const Dashboard = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -12,37 +10,36 @@ const Dashboard = () => {
   const mediumSolved = 158;
   const hardSolved = 173;
 
+  const testResults = [
+    78, 85, 32, 54, 80, 61, 22, 93, 40, 51, 63, 88, 91, 73, 87,
+  ];
+
   const renderAnalytics = () => {
     switch (tabIndex) {
       case 0:
         return (
-          <div className="flex flex-wrap gap-4">
-            <div className="max-w-[450px] doughnut-chart-container">
-              <DoughnutChart
-                labels={["Easy", "Medium", "Hard"]}
-                data={[easySolved, mediumSolved, hardSolved]}
-                backgroundColor={["#FEE501", "#02FC1B", "#FF0303"]}
-                cutout="70%"
-                legends={false}
-              />
-            </div>
-            <div className="max-w-[450px] h-[300px] doughnut-chart-container">
-              <AnalyticsProgressBar
-                easySolved={25}
-                easyTotal={52}
-                mediumSolved={31}
-                mediumTotal={44}
-                hardSolved={21}
-                hardTotal={36}
-              />
-            </div>
-            <div className="">
-              <ConfidenceCard />
-            </div>
-          </div>
+          <Analytics
+            easySolved={52}
+            easyTotal={80}
+            mediumSolved={46}
+            mediumTotal={76}
+            hardSolved={31}
+            hardTotal={42}
+            testResults={testResults}
+          />
         );
       case 1:
-        return <div>Science Analytics: Charts, Performance, etc.</div>;
+        return (
+          <Analytics
+            easySolved={52}
+            easyTotal={80}
+            mediumSolved={46}
+            mediumTotal={76}
+            hardSolved={31}
+            hardTotal={42}
+            testResults={testResults}
+          />
+        );
       case 2:
         return <div>History Analytics: Trends, Scores, etc.</div>;
       case 3:
@@ -59,7 +56,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex flex-col p-4 overflow-y-auto overflow-x-hidden">
+    <div className="flex flex-col p-4 relative top-[60px] md:left-[250px] lg:left-[250px] w-[calc(100vw-250px)]">
       <div className="flex justify-center">
         <AnalyticsTab setTabIndex={setTabIndex} />
       </div>

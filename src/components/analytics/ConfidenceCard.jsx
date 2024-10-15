@@ -43,17 +43,17 @@ const ConfidenceCard = () => {
   };
 
   return (
-    <div className="relative sm:w-[450px] md:w-[450px] lg:w-[320px] h-[300px] flex flex-col justify-center gap-5 items-center shadow-md rounded-lg">
-      <h1 className="text-center text-2xl font-semibold">Confidence</h1>
+    <div className="relative w-full h-[300px] flex flex-col justify-center gap-5 items-center shadow-md rounded-lg">
+      <h1 className="text-center text-2xl font-regular">Confidence</h1>
       <span className="text-md text-gray-500">{percentage}%</span>
 
       <div className="relative w-[280px] h-[150px] mb-6">
         <Doughnut data={data} options={options} />
 
         <div
-          className="absolute w-1 h-[80px] bg-[#79A8EE] origin-bottom transition-transform duration-[2s] rounded-md"
+          className="absolute w-1 h-[100px] bg-[#79A8EE] origin-bottom transition-transform duration-[1.8s] rounded-md"
           style={{
-            top: "70px",
+            top: "50px",
             left: "50%",
             transform: `rotate(${rotationAngle}deg) translate(-50%, 0)`,
             transformOrigin: "bottom center",

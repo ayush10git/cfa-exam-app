@@ -11,16 +11,11 @@ const roboto = Roboto({
 export default function DashboardLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} flex min-h-screen`}>
-        <div className="flex">
-          {/* Sidebar - Fixed to the left side */}
-          <DashboardSidebar />
-
-          {/* Main content area - this will scroll when necessary */}
-          <div className="flex-1 overflow-y-auto">
-            <Navbar />
-            <main className="flex-grow">{children}</main>
-          </div>
+      <body className={`${roboto.className} flex`}>
+        <DashboardSidebar />
+        <div className="flex flex-col">
+          <Navbar />
+          {children}
         </div>
       </body>
     </html>
